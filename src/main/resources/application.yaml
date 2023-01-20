@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: todo
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/master.xml
+    drop-first: false
+server:
+  port: 8080
+  http2:
+    enabled: true
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: application/json
+logging:
+  level:
+    root: INFO
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "health,info"
