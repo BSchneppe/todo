@@ -1,3 +1,5 @@
+springdoc:
+  use-management-port: true
 spring:
   application:
     name: todo
