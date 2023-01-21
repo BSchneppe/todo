@@ -1,11 +1,11 @@
 package com.simplesystem.todo.persistence.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import java.time.OffsetDateTime;
 
 @Entity(name = "todo")

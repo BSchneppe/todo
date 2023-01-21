@@ -5,7 +5,7 @@ spring:
     name: todo
   liquibase:
     enabled: true
-    change-log: classpath:db/changelog/master.xml
+    change-log: classpath:db/changelog/master.yaml
     drop-first: false
 server:
   port: 8080
@@ -26,4 +26,6 @@ management:
   endpoints:
     web:
       exposure:
-        include: "health,info"
+        include: "health,info,openapi,swagger-ui"
+  server:
+    port: 8081
