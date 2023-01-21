@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 
-    List<TodoEntity> findAllByDoneAtIsNullAndDueAtIsBefore(OffsetDateTime now);
+    List<TodoEntity> findAllByDoneAtIsNullAndDueAtIsAfter(OffsetDateTime now);
     default List<TodoEntity> findAllNotDone() {
-        return findAllByDoneAtIsNullAndDueAtIsBefore(OffsetDateTime.now());
+        return findAllByDoneAtIsNullAndDueAtIsAfter(OffsetDateTime.now());
     }
 }
