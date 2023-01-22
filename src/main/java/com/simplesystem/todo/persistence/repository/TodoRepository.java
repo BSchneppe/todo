@@ -9,6 +9,7 @@ import java.util.List;
 public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 
     List<TodoEntity> findAllByDoneAtIsNullAndDueAtIsAfter(OffsetDateTime now);
+
     default List<TodoEntity> findAllNotDone() {
         return findAllByDoneAtIsNullAndDueAtIsAfter(OffsetDateTime.now());
     }

@@ -58,13 +58,13 @@ class TodoControllerTest {
 
     @Test
     void updateTodo() throws Exception {
-        TodoModificationDto todoModificationDto = new TodoModificationDto( "test");
+        TodoModificationDto todoModificationDto = new TodoModificationDto("test");
         mockMvc.perform(put("/todos/1").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(todoModificationDto))).andExpect(status().isOk());
     }
 
     @Test
     void updateTodo_EmptyDescription() throws Exception {
-        TodoModificationDto emptyDescription = new TodoModificationDto( "");
+        TodoModificationDto emptyDescription = new TodoModificationDto("");
         mockMvc.perform(put("/todos/1").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(emptyDescription))).andExpect(status().isBadRequest());
     }
 

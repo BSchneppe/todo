@@ -63,7 +63,7 @@ class TodoServiceTest {
     }
 
     @Test
-    void updateNotFound(){
+    void updateNotFound() {
         //when
         TodoModificationDto todoModificationDto = new TodoModificationDto("test");
         ThrowableProblem notFound = assertThrows(ThrowableProblem.class, () -> tested.update(3L, todoModificationDto));
@@ -72,7 +72,7 @@ class TodoServiceTest {
     }
 
     @Test
-    void updatePastDue(){
+    void updatePastDue() {
         //given
         when(todoRepository.findById(PAST_DUE_ID)).thenReturn(Optional.of(PAST_DUE_VALID_TODO_ENTITY));
         //when
@@ -93,7 +93,7 @@ class TodoServiceTest {
     }
 
     @Test
-    void getByIdPastDue(){
+    void getByIdPastDue() {
         //given
         when(todoRepository.findById(PAST_DUE_ID)).thenReturn(Optional.of(PAST_DUE_VALID_TODO_ENTITY));
         //when
@@ -104,7 +104,7 @@ class TodoServiceTest {
     }
 
     @Test
-    void getByIdNotFound(){
+    void getByIdNotFound() {
         //given
         //when
         ThrowableProblem notFound = assertThrows(ThrowableProblem.class, () -> tested.getById(3L));
@@ -123,7 +123,7 @@ class TodoServiceTest {
     }
 
     @Test
-    void markAsDonePastDue(){
+    void markAsDonePastDue() {
         //given
         when(todoRepository.findById(PAST_DUE_ID)).thenReturn(Optional.of(PAST_DUE_VALID_TODO_ENTITY));
         //when
@@ -133,7 +133,7 @@ class TodoServiceTest {
     }
 
     @Test
-    void markAsDoneNotFound(){
+    void markAsDoneNotFound() {
         //given
         //when
         ThrowableProblem notFound = assertThrows(ThrowableProblem.class, () -> tested.markAsDone(3L));

@@ -21,6 +21,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://localhost:8081");
     }
+
     @Override
     public void configureMessageConverters(final List<HttpMessageConverter<?>> converters) {
         final ObjectMapper mapper = Jackson2ObjectMapperBuilder.json()

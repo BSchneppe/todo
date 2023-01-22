@@ -9,5 +9,6 @@ import java.time.OffsetDateTime;
 /**
  * A DTO for the {@link com.simplesystem.todo.persistence.entity.TodoEntity} entity
  */
-public record TodoCreationDto(@Future @NotNull OffsetDateTime dueAt, @NotBlank String description) implements Serializable {
+public record TodoCreationDto(@Future @NotNull OffsetDateTime dueAt,
+                              @NotBlank String description) implements Serializable {
 }

@@ -12,6 +12,17 @@ import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR, componentModel = "spring")
 public interface TodoMapper {
+    @Named("todoStatus")
+    static StatusEnum todoStatus(TodoEntity todoEntity) {
+        if (todoEntity.getDoneAt() != null) {
+            return StatusEnum.DONE;
+        } else if (todoEntity.getDueAt().isBefore(OffsetDateTime.now())) {
+            return StatusEnum.PAST_DUE;
+        } else {
+            return StatusEnum.NOT_DONE;
+        }
+    }
+
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "doneAt", ignore = true)
     TodoEntity toEntity(TodoCreationDto todoDto);
@@ -27,17 +38,5 @@ public interface TodoMapper {
 
     @InheritConfiguration
     List<TodoDto> toDtos(List<TodoEntity> todos);
-
-
-    @Named("todoStatus")
-    static StatusEnum todoStatus(TodoEntity todoEntity) {
-        if (todoEntity.getDoneAt() != null) {
-            return StatusEnum.DONE;
-        } else if (todoEntity.getDueAt().isBefore(OffsetDateTime.now())) {
-            return StatusEnum.PAST_DUE;
-        } else {
-            return StatusEnum.NOT_DONE;
-        }
-    }
 
 }
